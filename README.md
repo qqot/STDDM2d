@@ -1,10 +1,8 @@
 # STDDM2d
 # Domain Decomposition Method (DDM) for Large-Scale Electromagnetic Simulations
 This repository provides the source codes accompanying the paper:
-
-> **"Parallel overlapping-domain decomposition FDFD for large-scale complex nanostructures modeling"**  
-> Z. Wang *et al.*, 2025.  
-> (Manuscript currently under review.)
+**Z. Wang, C. Huang, W. Lu, Y. Chen, and W. Sha, "Parallel overlapping-domain decomposition FDFD for modeling of large-scale complex nanostructures," Opt. Express  33, 48793-48806 (2025).**
+doi: https://doi.org/10.1364/OE.578619
 
 ## 🔍 Overview
 
@@ -18,6 +16,4 @@ This project implements a parallel overlapping domain decomposition method (DDM)
 
 ## 🧠 Citation and Usage Policy
 If you use, adapt, or build upon this code in your research, please cite the following paper:
-
-Z. Wang, et al.
-Parallel overlapping-domain decomposition FDFD for large-scale complex nanostructures modeling, 2025.
+Z. Wang, C. Huang, W. Lu, Y. Chen, and W. Sha, "Parallel overlapping-domain decomposition FDFD for modeling of large-scale complex nanostructures," Opt. Express  33, 48793-48806 (2025).
