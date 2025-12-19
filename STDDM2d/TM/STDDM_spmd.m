@@ -108,7 +108,7 @@ spmd(Ndomain)
     fprintf('Worker %d: Complete initialization\n', labindex);
     % Set subdomain parameters and assemble the subsystem matrix
     mySub = SubParameters(mySub, k0, Totalnx, Totalny, epsilon, dx, dy);
-    mySub = AssemblyofEqu(mySub, k0, dx, dy,dz);
+    mySub = AssemblyofEqu(mySub, k0, dx, dy,Ndomain);
     mySub.Es=zeros(mySub.Totalsubnx*mySub.Totalsubny,1);
     mySub.Ez=zeros(mySub.Totalsubnx*mySub.Totalsubny,1);
     fprintf('Worker %d: Complete the matrix assembly\n', labindex);
@@ -205,3 +205,4 @@ colormap jet
 figure
 plot(linspace(0, 360, 361),RCS,'--','LineWidth',1.5);
 grid on;
+
