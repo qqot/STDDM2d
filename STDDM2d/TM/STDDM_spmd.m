@@ -117,9 +117,9 @@ spmd(Ndomain)
     fprintf('Worker %d: Complete factorization\n', labindex);
 
     labBarrier;
-    % 迭代求解
+    % Iterative solution
     Niter = 30;
-    err = 1;
+    err = 0.01;
     for iter = 1:Niter
         if iter == 1
             Ez_new = mySub.Q * (mySub.U \ (mySub.L \ (mySub.P * mySub.b)));
@@ -132,16 +132,16 @@ spmd(Ndomain)
         fprintf('Worker %d: Complete the %d round of calculation, wait for other workers...\n', labindex, iter);
         labBarrier;
 
-        %         % 第二步：检查收敛性（仅在非第一次迭代时）
-        %         max_temp = max(abs(Ez_new));
-        %         global_max = gop(@max, max_temp);  % 每个lab都获得相同global_max
-        %         local_converged = global_max < err;  % 当前lab是否认为已收敛
-        %         converged = gop(@or, local_converged);  % 任一lab满足条件即收敛
-        %
-        %         % 如果收敛，所有worker都退出迭代
-        %         if converged
-        %             break;
-        %         end
+        % Step 2: Check convergence
+         max_temp = max(abs(Ez_new));
+         global_max = gop(@max, max_temp);  % Each lab gets the same global_max
+         local_converged = global_max < err;  % Does the current lab consider it to have converged
+         converged = gop(@or, local_converged);  % Any lab converges if it meets the conditions
+        
+          % If convergence occurs, all workers exit the iteration
+          if converged
+              break;
+          end
 
 
         % Source transfer
@@ -205,4 +205,5 @@ colormap jet
 figure
 plot(linspace(0, 360, 361),RCS,'--','LineWidth',1.5);
 grid on;
+
 
